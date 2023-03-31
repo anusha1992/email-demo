@@ -1,0 +1,69 @@
+<div class="container">
+  <div>
+    <button
+      mat-icon-button
+      aria-label="close dialog"
+      class="float-right"
+      mat-dialog-close
+      (click)="closeDialog()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <h2>Invite Candidates</h2>
+  </div>
+  <!-- <button class="float-right" mat-button>X</button>
+  <h1>Invite Candidates</h1> -->
+  <form [formGroup]="form" (ngSubmit)="submitEmailForm(form)">
+    <div class="emailformControl">
+      <mat-form-field appearance="outline" class="increase-width">
+        <mat-label>To</mat-label>
+        <mat-chip-list #chipList aria-label="Email selection">
+          <mat-chip
+            *ngFor="let email of emails"
+            [selectable]="selectable"
+            [removable]="removable"
+            [selected]="email.invalid"
+            (removed)="remove(email)"
+          >
+            {{ email.emailId }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            formControlName="emailToControl"
+            placeholder="Enter email address and press enter"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+
+    <div class="emailformControl">
+      <mat-form-field appearance="outline" class="increase-width">
+        <mat-label>Subject</mat-label>
+        <input matInput formControlName="emailSubjectControl" />
+      </mat-form-field>
+    </div>
+    <div class="emailformControl">
+      <textarea readonly>
+        {{ defaultEmailBody }}
+      </textarea>
+    </div>
+    <div mat-dialog-actions>
+      <p>
+        Do not delete the variables that starts with "$" in the above content
+      </p>
+      <button
+        #submitButton
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid || isDisabled"
+        class="float-right-submit"
+      >
+        Invite Candidates
+      </button>
+    </div>
+  </form>
+</div>

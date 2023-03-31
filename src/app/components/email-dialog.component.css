@@ -1,0 +1,39 @@
+.container {
+  text-align: center;
+  margin: auto;
+}
+textarea {
+  overflow-y: auto;
+  height: 175px;
+  width: 733px;
+}
+.emailformControl {
+  text-align: left;
+  padding-left: 10px;
+}
+.increase-width {
+  width: 450px;
+}
+
+.float-right {
+  float: right;
+  padding-top: 0%;
+}
+
+.mat-actions {
+  text-align: center;
+}
+
+.mat-dialog-title {
+  margin-top: 0%;
+}
+p {
+  text-align: center;
+}
+.float-right-submit {
+  margin-left: auto;
+}
+
+.mat-chip-selected {
+  background-color: red !important;
+}
